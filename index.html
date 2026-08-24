@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shelf Number — Tamizdat Project library holdings</title>
+<meta name="description" content="Shelf Number maps the libraries that hold émigré and tamizdat editions documented by the Tamizdat Project Archive.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400;1,14..32,500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="vendor/leaflet.css">
+
+<!-- Component stylesheets. The cascade depends on this order — keep it,
+     and keep responsive.css last. -->
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/topbar.css">
+<link rel="stylesheet" href="assets/css/masthead.css">
+<link rel="stylesheet" href="assets/css/strip.css">
+<link rel="stylesheet" href="assets/css/map.css">
+<link rel="stylesheet" href="assets/css/stats.css">
+<link rel="stylesheet" href="assets/css/footer.css">
+<link rel="stylesheet" href="assets/css/libraries.css">
+<link rel="stylesheet" href="assets/css/network.css">
+<link rel="stylesheet" href="assets/css/titles.css">
+<link rel="stylesheet" href="assets/css/responsive.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topwrap">
+    <a class="brand" href="https://tamizdatproject.org" target="_blank" rel="noopener"><svg class="logo-svg" viewBox="0 0 292 70" width="292" height="70" aria-label="Tamizdat Project" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" overflow="hidden"><g transform="translate(-37 -612)"><g><g><g><g><path d="M2.29908 0.992774 0.867272 0.992774 0.867272 2.42459 0.867272 66.5698 0.867272 68.0016 2.29908 68.0016 249.992 68.0016 250.585 68.0016 251.006 67.5807 282.985 35.5081 283.995 34.4972 282.985 33.4862 251.006 1.4136 250.585 0.992774 249.992 0.992774 2.29908 0.992774ZM3.7309 65.1381 3.7309 3.85639 249.398 3.85639 279.949 34.4972 249.398 65.1381 3.7309 65.1381ZM19.9249 18.7261 19.9249 23.8186 30.2432 23.8186 30.2432 51.8604 36.1362 51.8604 36.1362 23.8186 46.4101 23.8186 46.4101 18.7261 19.9249 18.7261ZM54.6719 18.7261 42.8414 51.8604 49.157 51.8604 51.8701 43.9438 64.7234 43.9438 67.3698 51.8604 73.841 51.8604 62.0549 18.7261 54.6719 18.7261ZM63.1223 39.1182 53.5157 39.1182 55.1167 34.4482C56.1175 31.4017 57.1182 28.2217 58.3634 24.041 59.6089 28.2217 60.5873 31.4017 61.5657 34.4482L63.1223 39.1182ZM76.4322 18.7261 76.4322 51.8604 82.214 51.8604 82.214 34.9598C82.214 33.471 82.164 31.4341 82.1112 29.2693 82.0849 28.2005 82.058 27.1007 82.0362 26.0201 83.1924 29.6003 84.3044 33.025 84.9937 34.9598L91.3537 51.8604 96.157 51.8604 102.473 34.9598C103.073 33.2536 103.973 30.3938 104.947 27.2996 105.128 26.7237 105.312 26.1395 105.497 25.5532 105.482 26.1204 105.467 26.6949 105.451 27.2695 105.374 30.1417 105.297 33.014 105.297 34.9598L105.297 51.8604 111.079 51.8604 111.079 18.7261 102.584 18.7261 96.246 36.1383C95.6457 37.984 94.5783 41.2974 93.8 43.8771 93.0217 41.2974 91.9542 37.984 91.3314 36.1383L84.8824 18.7261 76.4322 18.7261ZM122.009 51.8604 122.009 18.7261 116.138 18.7261 116.138 51.8604 122.009 51.8604ZM125.534 47.1905 125.534 51.8604 151.664 51.8604 151.664 46.768 132.717 46.768C132.934 46.5113 133.15 46.2555 133.366 46 134.349 44.8387 135.323 43.6871 136.253 42.5206L151.486 23.3961 151.486 18.7261 126.112 18.7261 126.112 23.8186 144.414 23.8186C143.258 25.1307 142.146 26.465 141.078 27.7769L125.534 47.1905ZM155.211 51.8604 166.397 51.8604C176.537 51.8604 182.608 45.5004 182.608 35.2489 182.608 25.0638 176.493 18.7261 166.641 18.7261L155.211 18.7261 155.211 51.8604ZM166.085 46.8347 161.082 46.8347 161.082 23.7519 166.263 23.7519C173.246 23.7519 176.671 27.9549 176.671 35.2489 176.671 42.6096 173.29 46.8347 166.085 46.8347ZM194.228 18.7261 182.397 51.8604 188.713 51.8604 191.426 43.9438 204.279 43.9438 206.925 51.8604 213.397 51.8604 201.611 18.7261 194.228 18.7261ZM202.678 39.1182 193.071 39.1182 194.672 34.4482C195.673 31.4017 196.674 28.2217 197.919 24.041 199.165 28.2217 200.143 31.4017 201.121 34.4482L202.678 39.1182ZM209.806 18.7261 209.806 23.8186 220.124 23.8186 220.124 51.8604 226.017 51.8604 226.017 23.8186 236.29 23.8186 236.29 18.7261 209.806 18.7261Z" fill="currentColor" fill-rule="evenodd" fill-opacity="1" transform="matrix(1.02034 0 0 1 38 613)"/></g></g></g></g></g></svg></a>
+    <nav class="topnav" aria-label="Tamizdat Project">
+      <a href="https://tamizdatproject.org/" target="_blank" rel="noopener">Archives</a>
+      <a href="https://tamizdatproject.org/library/" target="_blank" rel="noopener">Library</a>
+      <a href="https://store.tamizdatproject.org/" target="_blank" rel="noopener">Store</a>
+    </nav>
+  </div>
+</header>
+
+<main id="page-map">
+<header class="masthead">
+  <div class="wrap">
+    <h1 class="title">Shelf Number</h1>
+    <p class="titlenote">A shelf number (also call number or shelf mark) is a unique code used in libraries, acting like an address to locate a specific book.</p>
+    <p class="standfirst">The <a class="archive-link" href="https://tamizdatproject.org/archive/banned-books-now/" target="_blank" rel="noopener"><b>Tamizdat Project Archive “From 2014 to the Present”</b></a> documents present-day publications by authors who have been forced into exile or can no longer publish in their own country. <b>Shelf Number</b>, a special project, traces the journey of these émigré and tamizdat editions, mapping the library shelves that now hold them and exploring the presence of Tamizdat editions across the globe.</p>
+  </div>
+</header>
+
+<div class="stripwrap"><div class="wrap"><div class="strip" id="strip"></div></div></div>
+
+<section class="mapsec">
+  <div class="wrap maphead">
+    <h2 class="sec">The Map</h2>
+    <p class="sec-note">Every library that holds a title, placed on the city where it sits. Search or filter by kind, then open a marker to read that library's shelf.</p>
+  </div>
+  <div class="wrap mapgrid">
+    <aside class="filters" aria-label="Map filters">
+      <div class="fhead">
+        <h2 class="ftitle">Filters</h2>
+        <button class="fhide" id="fhide" type="button" aria-expanded="true">Hide</button>
+      </div>
+      <div class="fbody" id="fbody">
+        <div class="search">
+          <input id="q" type="text" autocomplete="off" spellcheck="false" placeholder="author, title, publisher, library…" aria-label="Search by author, title, publisher, or library">
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="grpType" aria-expanded="true"><span class="flabel">Library type</span><span class="fpm">−</span></button>
+          <div class="fopts" id="grpType"></div>
+        </div>
+        <div class="legend">
+          Each stamp marks one library; its size grows with the number of titles held.
+          <div class="lg"><span class="mk" style="width:16px;height:16px"></span> few titles</div>
+          <div class="lg"><span class="mk" style="width:30px;height:30px"></span> many titles</div>
+        </div>
+      </div>
+    </aside>
+    <div class="mapcol">
+    <div class="mapbox">
+      <div class="maprow">
+        <div id="map"></div>
+        <div class="banner" id="banner"><div class="card">
+          <span class="t" id="bannerT"></span>
+          <span class="m" id="bannerM"></span>
+          <button id="bannerX" type="button">Clear</button>
+        </div></div>
+        <aside class="panel" id="panel" aria-label="Library">
+          <button class="close" id="pclose" aria-label="Close">×</button>
+          <div class="lname" id="pname"></div>
+          <div class="ploc" id="pmeta"></div>
+          <div class="ptype" id="ptype"></div>
+          <div class="pcount" id="pcount"></div>
+          <a class="pcoll" id="pcoll" data-nav="library" href="#library">See the collections <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </div>
+    <a class="seelibs" data-nav="libraries" href="#libraries">
+      <span class="sl-text"><span class="sl-label">See libraries</span><span class="sl-count" id="seelibsCount"></span></span>
+      <span class="sl-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+    </a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap">
+    <h2 class="sec">Reading the records</h2>
+    <p class="sec-note">What follows describes these <i>tamizdat</i> editions that surfaced in public library catalogues, and how far they have travelled.</p>
+
+    <div class="statgrid">
+      <div class="block pieblock">
+        <h3>Titles present in the libraries <span>share of the full catalogue</span></h3>
+        <div class="pierow"><div class="pie" id="pieFound"></div><ul class="leglist" id="legFound"></ul></div>
+      </div>
+      <div class="block pieblock">
+        <h3>Libraries by kind <span>share of located libraries</span></h3>
+        <div class="pierow"><div class="pie" id="pieType"></div><ul class="leglist" id="legType"></ul></div>
+      </div>
+      <div class="block">
+        <h3>Author by reach <span>avg. libraries per title / top 10</span></h3>
+        <ul class="bars" id="authReach"></ul>
+      </div>
+      <div class="block">
+        <h3>How far each title travelled <span>titles by number of holding libraries</span></h3>
+        <ul class="bars" id="reach"></ul>
+      </div>
+      <div class="block span2">
+        <h3>The most widely dispersed titles <span>libraries per title / top 15</span></h3>
+        <div class="dispgrid" id="topTitles"></div>
+      </div>
+    </div>
+    <a class="seelibs seetitles" data-nav="titles" href="#titles">
+      <span class="sl-text"><span class="sl-label">See titles</span><span class="sl-count" id="seetitlesCount"></span></span>
+      <span class="sl-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
+    </a>
+  </div>
+</section>
+
+<section class="netsec">
+  <div class="wrap">
+    <h2 class="sec">Shared Collections</h2>
+  </div>
+  <div class="wrap netgrid">
+    <div class="netcol">
+      <div class="netwrap"><div id="netgl"></div><canvas id="net"></canvas><div class="nettip" id="netTip" hidden></div></div>
+    </div>
+    <aside class="netaside" aria-label="Network legend">
+      <p class="sec-note">Each title links to the libraries that hold it. Widely‑held titles pull many collections together toward the centre; distinctive holdings sit out at the edges.</p>
+      <div class="netlegend">
+        <span class="nl netkey"><i class="ndot lib"></i> Library</span>
+        <span class="nl netkey"><i class="ndot au"></i> Title</span>
+      </div>
+      <div class="netbtns" id="netBtns" hidden>
+        <button type="button" class="netbtn" id="netBoost">Boost</button>
+        <button type="button" class="netbtn" id="netPause">Pause</button>
+        <button type="button" class="netbtn" id="netFit">Fit view</button>
+      </div>
+      <ul class="nethints">
+        <li>Scroll to zoom</li>
+        <li>Hover for labels</li>
+        <li>Click a node to lock its connections</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<footer class="aboutsec">
+  <div class="wrap">
+    <h2 class="sec">About the Project</h2>
+    <p class="about-lead">Shelf Number aims to map the libraries that hold editions of the fifth wave of tamizdat, to explore the presence and availability of these editions, and the shape of the collections that hold them.</p>
+
+    <h4 class="about-sub">Source</h4>
+    <ol class="about-src">
+      <li><a href="https://tamizdatproject.org/archive/banned-books-now/" target="_blank" rel="noopener">Tamizdat Project Archive (2014–present)</a></li>
+      <li><a href="https://search.worldcat.org/" target="_blank" rel="noopener">WorldCat</a></li>
+    </ol>
+
+    <h4 class="about-sub">Considerations</h4>
+    <ul class="about-notes">
+      <li><b>Incomplete data.</b> The collection remains incomplete, as new material is published almost every day. Some publishers are underrepresented owing to the lack of information available online, and library catalogue updates also take time. Not all libraries are registered within the WorldCat system either, so their holdings may not appear here.</li>
+      <li><b>Historical perspective matters.</b> Any attempt to analyse processes in real time is nearly impossible, given the number of unknown variables and uncertainties.</li>
+      <li><b>Inconsistencies.</b> There may be inconsistencies in the data: while publishers and libraries share standardized data formats, some records are still inconsistent and may affect the statistics.</li>
+    </ul>
+    <p class="about-close">Our goal is not to provide definitive conclusions, but rather to step back, take a broader view, and explore this wave.</p>
+    <p class="about-ongoing">Shelf Number is an ongoing project, and the data will be updated as it moves forward.</p>
+    <p class="about-updated">Last updated <b>August 2026</b>.</p>
+  </div>
+</footer>
+</main>
+
+<main id="page-libs" hidden>
+  <div class="wrap libhead">
+    <nav class="crumbs" id="crumbs" aria-label="Breadcrumb"></nav>
+    <div class="libheadrow">
+      <div class="libheadmain">
+        <h1 class="libtitle" id="libTitle">Libraries</h1>
+        <p class="libsub" id="libSub"></p>
+      </div>
+      <div class="libsort" id="libSortWrap">
+        <label class="libsort-label" for="libSort">Sort</label>
+        <select class="libsort-select" id="libSort">
+          <option value="az">Alphabetically: A–Z</option>
+          <option value="za">Alphabetically: Z–A</option>
+          <option value="holdasc">By number of holdings: ascending</option>
+          <option value="holddesc">By number of holdings: descending</option>
+          <option value="near">Closest to me</option>
+        </select>
+        <span class="libsort-note" id="libSortNote" hidden></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap libwrap">
+    <aside class="filters libfilters" aria-label="Library filters">
+      <div class="fhead"><h2 class="ftitle">Filters</h2><button class="fhide" id="lfhide" type="button" aria-expanded="true">Hide</button></div>
+      <div class="fbody" id="lfbody">
+        <div class="search">
+          <input id="lq" type="text" autocomplete="off" spellcheck="false" placeholder="Search" aria-label="Search libraries">
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="lgrpType" aria-expanded="true"><span class="flabel">Library type</span><span class="fpm">−</span></button>
+          <div class="fopts" id="lgrpType"></div>
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="lgrpCountry" aria-expanded="false"><span class="flabel">Country</span><span class="fpm">+</span></button>
+          <div class="fopts hidden" id="lgrpCountry"></div>
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="lgrpCity" aria-expanded="false"><span class="flabel">City</span><span class="fpm">+</span></button>
+          <div class="fopts hidden" id="lgrpCity"></div>
+        </div>
+        <button class="resetbtn" id="lreset" type="button">Reset filters</button>
+      </div>
+    </aside>
+    <div class="libmain">
+      <div id="libDirectory" class="libcards"></div>
+      <div id="libDetail" hidden></div>
+      <div id="libBook" hidden></div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap cols">
+      <div>
+        <h4>Source</h4>
+        <p>Tamizdat Project Archive (2014–present) and WorldCat.</p>
+      </div>
+      <div>
+        <h4>Note</h4>
+        <p>Library records take time to update, so some holdings may not be reflected here yet. Last updated August 2026.</p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<main id="page-titles" hidden>
+  <div class="wrap libhead">
+    <nav class="crumbs" id="tcrumbs" aria-label="Breadcrumb"></nav>
+    <div class="libheadrow">
+      <div class="libheadmain">
+        <h1 class="libtitle">Titles</h1>
+        <p class="libsub" id="tSub"></p>
+      </div>
+      <div class="libsort">
+        <label class="libsort-label" for="titleSort">Sort</label>
+        <select class="libsort-select" id="titleSort">
+          <option value="az">Alphabetically: A–Z</option>
+          <option value="za">Alphabetically: Z–A</option>
+          <option value="holdasc">By number of holding libraries: ascending</option>
+          <option value="holddesc">By number of holding libraries: descending</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="wrap libwrap">
+    <aside class="filters tfilters" aria-label="Title filters">
+      <div class="fhead"><h2 class="ftitle">Filters</h2><button class="fhide" type="button" aria-expanded="true">Hide</button></div>
+      <div class="fbody" id="tfbody">
+        <div class="search">
+          <input id="tq" type="text" autocomplete="off" spellcheck="false" placeholder="Search title, author, translator, editor" aria-label="Search titles">
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="tgLang" aria-expanded="false"><span class="flabel">Language</span><span class="fpm">+</span></button>
+          <div class="fopts hidden" id="tgLang"></div>
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="tgPub" aria-expanded="false"><span class="flabel">Publisher</span><span class="fpm">+</span></button>
+          <div class="fopts hidden" id="tgPub"></div>
+        </div>
+        <div class="fgroup">
+          <button class="fgh" type="button" aria-controls="tgPlace" aria-expanded="false"><span class="flabel">Publication Place</span><span class="fpm">+</span></button>
+          <div class="fopts hidden" id="tgPlace"></div>
+        </div>
+        <div class="fgroup">
+          <div class="fstatic">Publication Date</div>
+          <div class="yearbox" id="tgYear">
+            <div class="yearinputs">
+              <input type="number" id="tyMinN" inputmode="numeric" aria-label="From year">
+              <input type="number" id="tyMaxN" inputmode="numeric" aria-label="To year">
+            </div>
+            <div class="yearslider">
+              <div class="ytrack"></div><div class="yfill" id="tyFill"></div>
+              <input type="range" id="tyMin" aria-label="From year">
+              <input type="range" id="tyMax" aria-label="To year">
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <div class="libmain"><div id="titleGrid" class="bookcards"></div></div>
+  </div>
+  <footer>
+    <div class="wrap cols">
+      <div>
+        <h4>Source</h4>
+        <p>Tamizdat Project Archive (2014–present) and WorldCat.</p>
+      </div>
+      <div>
+        <h4>Note</h4>
+        <p>Library records take time to update, so some holdings may not be reflected here yet. Last updated August 2026.</p>
+      </div>
+    </div>
+  </footer>
+</main>
+
+<!-- Vendored so the site keeps working offline and stays pinned to the tested
+     versions. Both attach the globals the modules read: L and CosmosGL. -->
+<script src="vendor/leaflet.js"></script>
+<script src="vendor/cosmos.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+</body>
+</html>
