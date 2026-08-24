@@ -1,0 +1,135 @@
+/* Shelf Number — libraries directory, sort control, book detail
+   Rules are lifted verbatim from the original single-file prototype.
+   index.html links these in a fixed order; do not re-order the <link> tags. */
+
+/* ---------- libraries page ---------- */
+/* breadcrumb */
+.crumbs{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:16px; font-size:15px}
+.crumb{color:var(--grey); text-decoration:none; font-weight:400; font-variation-settings:"opsz" 20}
+a.crumb:hover{color:var(--violet)}
+.crumb.cur{color:var(--ink)}
+.crsep{color:var(--ink-faint)}
+
+.libhead{padding:26px 0 6px}
+.libtitle{font-size:clamp(30px,5vw,50px); font-weight:500; letter-spacing:-.03em; margin:0; line-height:1.05;
+  font-variation-settings:"opsz" 32}
+.titlecount{font-size:.42em; font-weight:500; color:var(--grey); letter-spacing:-.01em; margin-left:8px;
+  white-space:nowrap; font-variation-settings:"opsz" 20}
+.libsub{font-size:15px; color:var(--grey); margin:12px 0 0; font-weight:400}
+.libwrap{display:grid; grid-template-columns:288px 1fr; gap:26px; align-items:start; padding:20px 0 44px}
+#page-libs.detailmode .libfilters{display:none}
+#page-libs.detailmode .libwrap{grid-template-columns:1fr}
+.libmain{min-width:0}
+
+/* library cards (vertical, grey — icon instead of cover) */
+.libcards{display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:16px}
+.libcard{display:flex; flex-direction:column; padding:18px; background:var(--card);
+  border-radius:12px; text-decoration:none; color:var(--ink); transition:box-shadow .12s}
+.libcard:hover{box-shadow:0 5px 18px rgba(38,51,55,.12)}
+.lc-top{font-size:13px; color:var(--grey); font-weight:400; margin-bottom:14px}
+.lc-iconwrap{width:100%; height:140px; display:flex; align-items:center; justify-content:center; margin-bottom:16px}
+.lc-iconwrap .tico{width:74px; height:74px; color:var(--ink-900); stroke-width:1.4}
+.lc-name{font-size:17px; font-weight:600; line-height:1.25; letter-spacing:-.01em; margin:0 0 6px}
+.lc-loc{font-size:13px; color:var(--grey); line-height:1.45}
+.libempty{color:var(--ink-soft); font-size:15px; padding:20px 0}
+
+/* See libraries button (under the map) */
+.mapcol{min-width:0; display:flex; flex-direction:column}
+.seelibs{align-self:flex-start; display:inline-flex; align-items:center; gap:10px; margin-top:22px;
+  text-decoration:none; color:var(--ink)}
+.sl-label{font-size:26px; font-weight:700; letter-spacing:-.02em; font-variation-settings:"opsz" 32}
+.sl-count{font-size:26px; font-weight:700; letter-spacing:-.02em; color:var(--grey);
+  font-variation-settings:"opsz" 32; font-variant-numeric:tabular-nums}
+.sl-text{display:inline-flex; align-items:baseline; gap:10px; border-bottom:1px solid transparent; padding-bottom:2px}
+.seelibs:hover .sl-text{border-bottom-color:var(--ink-faint)}
+.sl-arrow{width:26px; height:26px; border-radius:50%; background:#dcd9d4; color:var(--grey);
+  display:flex; align-items:center; justify-content:center; margin-left:2px}
+.sl-arrow svg{width:13px; height:13px; display:block}
+
+/* book cards (vertical, reference style) */
+.bookcards{display:grid; grid-template-columns:repeat(auto-fill,minmax(198px,1fr)); gap:16px}
+.bookcard{display:flex; flex-direction:column; padding:18px; background:var(--card); border-radius:12px;
+  text-decoration:none; color:inherit; transition:box-shadow .12s}
+.bookcard.islink{cursor:pointer}
+.bookcard.islink:hover{box-shadow:0 5px 18px rgba(38,51,55,.12)}
+.bc-top{font-size:13px; color:var(--grey); font-weight:400; margin-bottom:14px}
+.bc-coverwrap{width:100%; height:188px; display:flex; align-items:center; justify-content:center; margin-bottom:16px}
+.bc-cover{max-width:100%; max-height:188px; width:auto; height:auto; object-fit:contain;
+  box-shadow:0 3px 11px rgba(38,51,55,.18)}
+.bc-cover.noimg{width:130px; height:180px; display:flex; align-items:center; justify-content:center;
+  font-size:44px; font-weight:700; color:var(--ink-faint); background:var(--paper2); box-shadow:none}
+.bc-title{font-size:17px; font-weight:600; line-height:1.2; letter-spacing:-.01em; margin:0 0 6px}
+.bc-au{font-size:14px; color:var(--ink); font-weight:500; margin-bottom:4px}
+.bc-au .role{color:var(--grey); font-weight:400}
+.bc-pub{font-size:13px; color:var(--grey); line-height:1.4}
+.bc-learn{margin-top:12px; font-size:13px; font-weight:600; color:var(--violet); text-decoration:none;
+  align-self:flex-start}
+.bc-learn:hover{text-decoration:underline}
+
+/* subtle rounding (a bit) */
+.mapbox{border-radius:12px}
+.maprow{border-radius:8px}
+.results{border-radius:10px}
+.banner .card{border-radius:10px}
+.resetbtn{border-radius:9px}
+.opt .box{border-radius:4px}
+.bookcard{border-radius:10px}
+.bc-cover{border-radius:6px}
+
+.libheadrow{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap}
+.libheadmain{min-width:0}
+.libsort{display:flex; align-items:center; gap:8px; padding-bottom:2px}
+.libsort-label{font-size:13px; color:var(--ink-soft)}
+.libsort-select{font:inherit; font-size:14px; color:var(--ink); background:var(--paper2);
+  border:1px solid var(--hair); border-radius:999px; padding:7px 32px 7px 14px; cursor:pointer;
+  appearance:none; -webkit-appearance:none;
+  background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238a9599' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 11px center; background-size:12px}
+.libsort-select:hover{border-color:var(--ink-faint)}
+.libsort-note{font-size:13px; color:var(--ink-soft); max-width:280px}
+/* custom sort dropdown (native <select> popups can't be styled) */
+.sortbox{position:relative}
+.sortbtn{display:flex; align-items:center; gap:10px; font:inherit; font-size:14px; color:var(--ink);
+  background:var(--paper2); border:1px solid var(--hair); border-radius:999px; padding:8px 14px; cursor:pointer}
+.sortbtn:hover{border-color:var(--ink-faint)}
+.sortbtn:focus-visible{outline:2px solid #2b6cff; outline-offset:1px}
+.sortbtn svg{width:13px; height:13px; color:var(--grey); flex:none; transition:transform .15s ease}
+.sortbox.open .sortbtn svg{transform:rotate(180deg)}
+.sortmenu{position:absolute; right:0; top:calc(100% + 8px); z-index:60; min-width:300px;
+  margin:0; padding:12px 0; list-style:none; background:var(--paper);
+  border:1px solid var(--hair); border-radius:14px; box-shadow:0 14px 36px rgba(0,0,0,.13)}
+.sortmenu li{padding:13px 26px; font-size:16px; line-height:1.3; color:var(--ink);
+  cursor:pointer; white-space:nowrap}
+.sortmenu li:hover,.sortmenu li.cursor{background:rgba(0,0,0,.045)}
+.sortmenu li[aria-selected="true"]{font-weight:600}
+.libsort-select{display:none}
+
+/* book detail page */
+#page-libs.bookmode .libtitle,#page-libs.bookmode .libsub{display:none}
+.bookhero{display:grid; grid-template-columns:210px 1fr; gap:38px; align-items:start;
+  padding:6px 0 30px; margin-bottom:28px; border-bottom:1px solid var(--hair)}
+.bh-coverwrap{width:210px}
+.bh-cover{width:100%; height:auto; display:block; border-radius:2px; box-shadow:0 6px 22px rgba(38,51,55,.18)}
+.bh-cover.noimg{aspect-ratio:2/3; display:flex; align-items:center; justify-content:center;
+  font-size:64px; font-weight:700; color:var(--ink-faint); background:var(--card); box-shadow:none}
+.bh-info{min-width:0; padding-top:4px}
+.bh-title{font-size:clamp(24px,3.2vw,36px); font-weight:600; letter-spacing:-.02em; line-height:1.12; margin:0 0 12px}
+.bh-orig{color:var(--grey); font-weight:400}
+.bh-au{font-size:17px; color:var(--ink); font-weight:500; line-height:1.3; margin-bottom:3px}
+.bh-au .role{color:var(--grey); font-weight:400}
+.bh-au + .bh-meta{margin-top:14px}
+.bh-meta{font-size:16px; color:var(--ink-700); margin-bottom:20px}
+.bh-learn{display:inline-block; font-size:14px; font-weight:600; color:var(--violet); text-decoration:none}
+.bh-learn:hover{text-decoration:underline}
+.bh-libhead{font-family:"Inter",sans-serif; font-size:15px; font-weight:600; letter-spacing:-.005em;
+  color:var(--ink); margin:0 0 16px; padding-bottom:11px; border-bottom:1px solid var(--ink)}
+.bhl-list{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:10px}
+.bhl-card{display:flex; align-items:center; gap:14px; padding:14px 16px; background:var(--card);
+  border-radius:10px; text-decoration:none; color:var(--ink); transition:box-shadow .12s}
+.bhl-card:hover{box-shadow:0 3px 12px rgba(38,51,55,.10)}
+.bhl-icon{width:26px; height:26px; flex:0 0 auto; color:var(--ink-900); display:flex}
+.bhl-icon svg{width:100%; height:100%}
+.bhl-mid{min-width:0}
+.bhl-name{font-size:15px; font-weight:600; line-height:1.2}
+.bhl-loc{font-size:13px; color:var(--grey); margin-top:2px}
+.bhl-type{font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--grey); margin-top:4px}

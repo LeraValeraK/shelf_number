@@ -1,0 +1,24 @@
+/* Shelf Number — titles page publication-date range
+   Rules are lifted verbatim from the original single-file prototype.
+   index.html links these in a fixed order; do not re-order the <link> tags. */
+
+/* titles filters: publication-date range */
+.fstatic{font-size:14px; font-weight:600; color:var(--ink); padding:2px 0 8px}
+.yearbox{padding:2px 0 4px}
+.yearinputs{display:flex; gap:10px; align-items:center; margin-bottom:14px}
+.yearinputs input{width:100%; font:inherit; font-size:14px; color:var(--ink); background:var(--paper2);
+  border:1px solid var(--hair); border-radius:8px; padding:8px 10px; -moz-appearance:textfield; appearance:textfield}
+.yearinputs input::-webkit-outer-spin-button,.yearinputs input::-webkit-inner-spin-button{-webkit-appearance:none; margin:0}
+.yearslider{position:relative; height:24px; margin:0 8px}
+.ytrack{position:absolute; top:11px; left:-8px; right:-8px; height:3px; background:var(--ink-faint); border-radius:3px}
+.yfill{position:absolute; top:11px; height:3px; background:var(--violet); border-radius:3px}
+.yearslider input[type=range]{position:absolute; top:0; left:0; width:100%; height:24px; margin:0;
+  background:none; pointer-events:none; -webkit-appearance:none; appearance:none}
+.yearslider input[type=range]::-webkit-slider-runnable-track{background:none; height:24px; border:none}
+.yearslider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none; appearance:none; pointer-events:auto;
+  width:16px; height:16px; margin-top:4px; border-radius:50%; background:var(--violet); border:2px solid #fff;
+  box-shadow:0 1px 3px rgba(0,0,0,.28); cursor:pointer}
+.yearslider input[type=range]::-moz-range-track{background:none; height:24px}
+.yearslider input[type=range]::-moz-range-thumb{pointer-events:auto; width:14px; height:14px; border-radius:50%;
+  background:var(--violet); border:2px solid #fff; box-shadow:0 1px 3px rgba(0,0,0,.28); cursor:pointer}
+.tempty{color:var(--grey); font-size:15px; padding:22px 2px}

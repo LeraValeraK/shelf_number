@@ -1,0 +1,28 @@
+/* Shelf Number — design tokens, reset, page shell
+   Rules are lifted verbatim from the original single-file prototype.
+   index.html links these in a fixed order; do not re-order the <link> tags. */
+
+:root{
+  --paper:#fcfaf7; --paper2:#ffffff; --paper3:#f5f3f1;
+  --card:#f5f3f1; --grey:#8a9599;
+  --ink:#263338; --ink-soft:#8a9599; --ink-700:#576266; --ink-faint:#c2c9cc;
+  --hair:rgba(0,0,0,.1); --hair2:rgba(0,0,0,.06);
+  --violet:#3f6699; --violet-2:#8aa6c6; --violet-ink:#274a72;
+  --land:#fbfaf7; --land-line:#cfd5d4; --sea:#cbd2d1;
+  --stamp:#3f6699;
+  --maxw:1406px;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0; overflow-x:hidden}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-optical-sizing:auto;
+  font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:"Inter",-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.wrap{width:min(100% - 32px, var(--maxw)); margin-inline:auto; padding:0}
+a{color:var(--violet-ink)}

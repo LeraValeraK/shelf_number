@@ -1,0 +1,32 @@
+/* Shelf Number — breakpoints and reduced motion — must load last
+   Rules are lifted verbatim from the original single-file prototype.
+   index.html links these in a fixed order; do not re-order the <link> tags. */
+
+@media (max-width:640px){ .sortmenu{min-width:0; width:max-content; max-width:78vw} .sortmenu li{font-size:15px; padding:12px 20px} }
+
+@media (max-width:900px){
+  .dispgrid{grid-template-columns:repeat(3,1fr)}
+  .bookhero{grid-template-columns:1fr; gap:20px}
+  .bh-coverwrap{width:150px}
+  .bhl-list{grid-template-columns:1fr}
+  .libcards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .grid{grid-template-columns:1fr; gap:0}
+  .statgrid{grid-template-columns:1fr; gap:32px}
+  footer .cols{grid-template-columns:1fr}
+  .mapgrid{grid-template-columns:1fr; gap:16px}
+  .netgrid{grid-template-columns:1fr; gap:16px}
+  .netaside{position:static; order:-1}
+  #net,#netgl{height:70vh; min-height:440px}
+  .libwrap{grid-template-columns:1fr; gap:16px}
+  .libfilters{position:static}
+  .bookcards{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+  .filters{position:static}
+  #map{height:70vh; min-height:440px}
+  .panel{width:100%; max-width:100%; top:auto; bottom:0; height:76%;
+    border-left:0; border-top:1px solid var(--hair); transform:translateY(102%)}
+  .panel.open{transform:translateY(0)}
+  .bars li{grid-template-columns:96px 1fr 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important; animation:none!important}
+}

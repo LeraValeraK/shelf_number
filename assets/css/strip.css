@@ -1,0 +1,13 @@
+/* Shelf Number — the four-figure statistics strip
+   Rules are lifted verbatim from the original single-file prototype.
+   index.html links these in a fixed order; do not re-order the <link> tags. */
+
+/* ---------- stat strip ---------- */
+.stripwrap{border-bottom:0}
+.strip{display:flex; flex-wrap:wrap; gap:6px 44px; padding:2px 0 0}
+.strip .cell{flex:1 1 0; min-width:130px; padding:4px 0 10px; border-left:0}
+.strip .cell .k{font-size:30px; font-weight:600;
+  letter-spacing:-.03em; line-height:1; color:var(--ink); font-variant-numeric:tabular-nums}
+.strip .cell .l{font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-faint); margin-top:9px; font-weight:500}
+.strip .cell.accent .k{color:var(--violet)}
